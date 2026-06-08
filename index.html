@@ -175,8 +175,9 @@
                     <button onclick="filterMenu('semua')" id="btn-semua" class="menu-filter-btn px-5 py-2.5 rounded-full font-bold text-xs uppercase tracking-wider transition-all border border-brand-100 bg-brand-700 text-white shadow-md">Semua Hidangan</button>
                     <button onclick="filterMenu('ayam')" id="btn-ayam" class="menu-filter-btn px-5 py-2.5 rounded-full font-bold text-xs uppercase tracking-wider transition-all border border-stone-200 bg-white text-stone-600 hover:bg-stone-50">Serba Ayam</button>
                     <button onclick="filterMenu('bebek')" id="btn-bebek" class="menu-filter-btn px-5 py-2.5 rounded-full font-bold text-xs uppercase tracking-wider transition-all border border-stone-200 bg-white text-stone-600 hover:bg-stone-50">Serba Bebek</button>
-                    <button onclick="filterMenu('paket')" id="btn-paket" class="menu-filter-btn px-5 py-2.5 rounded-full font-bold text-xs uppercase tracking-wider transition-all border border-stone-200 bg-white text-stone-600 hover:bg-stone-50">Paket Hemat Box</button>
-                    <button onclick="filterMenu('pelengkap')" id="btn-pelengkap" class="menu-filter-btn px-5 py-2.5 rounded-full font-bold text-xs uppercase tracking-wider transition-all border border-stone-200 bg-white text-stone-600 hover:bg-stone-50">Pelengkap & Sambal</button>
+                    <button onclick="filterMenu('paket')" id="btn-paket" class="menu-filter-btn px-5 py-2.5 rounded-full font-bold text-xs uppercase tracking-wider transition-all border border-stone-200 bg-white text-stone-600 hover:bg-stone-50">Paket Nasi & Kebuli</button>
+                    <button onclick="filterMenu('hampers')" id="btn-hampers" class="menu-filter-btn px-5 py-2.5 rounded-full font-bold text-xs uppercase tracking-wider transition-all border border-stone-200 bg-white text-stone-600 hover:bg-stone-50">Hampers & Spesial</button>
+                    <button onclick="filterMenu('pelengkap')" id="btn-pelengkap" class="menu-filter-btn px-5 py-2.5 rounded-full font-bold text-xs uppercase tracking-wider transition-all border border-stone-200 bg-white text-stone-600 hover:bg-stone-50">Pelengkap</button>
                 </div>
                 <!-- 4-Column Product Grid -->
                 <div id="menu-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -686,7 +687,8 @@
                                 <select id="menu-category" required class="w-full bg-[#fafafa] border border-stone-200 rounded-xl px-3 py-2 text-xs outline-none focus:border-brand-700 font-medium">
                                     <option value="ayam">Serba Ayam</option>
                                     <option value="bebek">Serba Bebek</option>
-                                    <option value="paket">Paket Hemat Box</option>
+                                    <option value="paket">Paket Nasi & Kebuli</option>
+                                    <option value="hampers">Hampers & Spesial</option>
                                     <option value="pelengkap">Sambal & Pelengkap</option>
                                 </select>
                             </div>
@@ -773,13 +775,44 @@
     <script>
         const ADMIN_WHATSAPP_NUMBER = "6281323884616";
         
-        // Initial Menu Data
+        // Comprehensive Master Menu Data dari Daftar UMKM Bang Sis
         const defaultMenuData = [
-            { id: 1, name: "Ayam Panggang Spesial", category: "ayam", price: 95000, stock: 15, description: "Ayam utuh panggangan tradisional khas Bang Sis.", badge: "Rekomendasi", image: "https://images.unsplash.com/photo-1598515214211-89d3e73ae83b?q=80&w=400" },
-            { id: 2, name: "Bebek Panggang Premium", category: "bebek", price: 135000, stock: 8, description: "Bebek gurih empuk yang dipanggang lambat.", badge: "Terlaris", image: "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=400" },
-            { id: 3, name: "Ayam Panggang Potong", category: "ayam", price: 24000, stock: 35, description: "Potongan dada/paha jumbo olesan bumbu meresap.", badge: "Favorit", image: "https://images.unsplash.com/photo-1598515214211-89d3e73ae83b?q=80&w=400" },
-            { id: 4, name: "Paket Hemat Box Bebek", category: "paket", price: 38000, stock: 0, description: "Nasi, Bebek Panggang, Lalapan, Sambal Korek.", badge: "Hemat", image: "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?q=80&w=400" },
-            { id: 5, name: "Ekstra Sambal Korek", category: "pelengkap", price: 6000, stock: 50, description: "Sambal rawit super pedas minyak kelapa.", badge: "Pedas", image: "https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?q=80&w=400" }
+            { id: 1, name: "Ayam Negeri Marem Mini", category: "ayam", price: 45000, stock: 24, description: "Ayam Utuhan + Lalapan + Sambel (Pilihan: Original / Kecap / Serundeng+5rb / Madu+5rb)", badge: "Mini", image: "https://images.unsplash.com/photo-1598515214211-89d3e73ae83b?q=80&w=400" },
+            { id: 2, name: "Ayam Negeri Marem Jumbo", category: "ayam", price: 65000, stock: 15, description: "Ayam Utuhan + Lalapan + Sambel (Pilihan: Original / Kecap / Serundeng+5rb / Madu+5rb)", badge: "Jumbo", image: "https://images.unsplash.com/photo-1598515214211-89d3e73ae83b?q=80&w=400" },
+            { id: 3, name: "Ayam Negeri Marem Super Jumbo", category: "ayam", price: 85000, stock: 10, description: "Ayam Utuhan + Lalapan + Sambel (Pilihan: Original / Kecap / Serundeng+5rb / Madu+5rb)", badge: "Rekomendasi", image: "https://images.unsplash.com/photo-1598515214211-89d3e73ae83b?q=80&w=400" },
+            { id: 4, name: "Ayam Kampung Panggang Original", category: "ayam", price: 90000, stock: 12, description: "Ayam Utuhan + Lalapan + Sambel", badge: "Khas", image: "https://images.unsplash.com/photo-1598515214211-89d3e73ae83b?q=80&w=400" },
+            { id: 5, name: "Ayam Kampung Panggang Kecap", category: "ayam", price: 90000, stock: 18, description: "Ayam Utuhan + Lalapan + Sambel", badge: "", image: "https://images.unsplash.com/photo-1598515214211-89d3e73ae83b?q=80&w=400" },
+            { id: 6, name: "Ayam Kampung Panggang Serundeng", category: "ayam", price: 95000, stock: 14, description: "Ayam Utuhan + Lalapan + Sambel", badge: "Gurih", image: "https://images.unsplash.com/photo-1598515214211-89d3e73ae83b?q=80&w=400" },
+            { id: 7, name: "Ayam Kampung Panggang Madu", category: "ayam", price: 95000, stock: 8, description: "Ayam Utuhan + Lalapan + Sambel", badge: "Manis", image: "https://images.unsplash.com/photo-1598515214211-89d3e73ae83b?q=80&w=400" },
+            
+            { id: 8, name: "Bebek Panggang Original", category: "bebek", price: 90000, stock: 22, description: "Bebek Utuhan + Lalapan + Sambel", badge: "", image: "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=400" },
+            { id: 9, name: "Bebek Panggang Kecap", category: "bebek", price: 90000, stock: 16, description: "Bebek Utuhan + Lalapan + Sambel", badge: "", image: "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=400" },
+            { id: 10, name: "Bebek Panggang Serundeng", category: "bebek", price: 95000, stock: 11, description: "Bebek Utuhan + Lalapan + Sambel", badge: "", image: "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=400" },
+            { id: 11, name: "Bebek Panggang Madu", category: "bebek", price: 95000, stock: 9, description: "Bebek Utuhan + Lalapan + Sambel", badge: "Terlaris", image: "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=400" },
+
+            { id: 12, name: "Ayam Negeri Panggang (Potong)", category: "ayam", price: 9000, stock: 45, description: "Per potong", badge: "Hemat", image: "https://images.unsplash.com/photo-1598515214211-89d3e73ae83b?q=80&w=400" },
+            { id: 13, name: "Bebek Peking Panggang (Potong)", category: "bebek", price: 23000, stock: 32, description: "Per potong", badge: "", image: "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=400" },
+            
+            { id: 14, name: "Paket Nasi Ayam Panggang", category: "paket", price: 14000, stock: 50, description: "Nasi + Ayam", badge: "Porsi Pas", image: "https://images.unsplash.com/photo-1563379926898-05f4575a45d8?q=80&w=400" },
+            { id: 15, name: "Paket Kebuli Bebek Panggang", category: "paket", price: 29000, stock: 20, description: "Nasi Kebuli + Bebek", badge: "", image: "https://images.unsplash.com/photo-1563379926898-05f4575a45d8?q=80&w=400" },
+            { id: 16, name: "Pahe Kebuli Basmati Ayam", category: "paket", price: 15000, stock: 38, description: "Paket Hemat Nasi Kebuli", badge: "Pahe", image: "https://images.unsplash.com/photo-1563379926898-05f4575a45d8?q=80&w=400" },
+            { id: 17, name: "Paket Kebuli Basmati Standar", category: "paket", price: 19000, stock: 25, description: "Nasi Kebuli Standar", badge: "", image: "https://images.unsplash.com/photo-1563379926898-05f4575a45d8?q=80&w=400" },
+            { id: 18, name: "Paket Kebuli Basmati Lengkap", category: "paket", price: 23000, stock: 17, description: "Nasi Kebuli Basmati Komplit", badge: "", image: "https://images.unsplash.com/photo-1563379926898-05f4575a45d8?q=80&w=400" },
+            
+            { id: 19, name: "Nasi Putih (Porsi)", category: "pelengkap", price: 5000, stock: 50, description: "Satu porsi nasi putih pulen", badge: "", image: "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?q=80&w=400" },
+            
+            { id: 20, name: "Hampers Keranjang", category: "hampers", price: 200000, stock: 5, description: "Paket Kebuli Ayam Utuh Kemasan Premium", badge: "Premium", image: "https://images.unsplash.com/photo-1576867757603-05b134ebc379?q=80&w=400" },
+            { id: 21, name: "Hampers Besek Tali Jinjing Ayam Mini", category: "hampers", price: 85000, stock: 10, description: "Ayam Panggang Jumbo", badge: "", image: "https://images.unsplash.com/photo-1576867757603-05b134ebc379?q=80&w=400" },
+            { id: 22, name: "Hampers Ayam Panggang Jumbo", category: "hampers", price: 85000, stock: 12, description: "Dengan Lalapan, Tanpa Besek Tali Jinjing. Hubungi Penjual untuk konfirmasi lebih lanjut.", badge: "", image: "https://images.unsplash.com/photo-1576867757603-05b134ebc379?q=80&w=400" },
+            { id: 23, name: "Nampan Mini Ayam Jumbo / Kebuli Nampan Mini", category: "hampers", price: 130000, stock: 8, description: "Ayam Jumbo + Nasi Kebuli", badge: "Nampan", image: "https://images.unsplash.com/photo-1576867757603-05b134ebc379?q=80&w=400" },
+            { id: 24, name: "Hampers Box Spesial Idul Fitri", category: "hampers", price: 75000, stock: 15, description: "Ayam Panggang Jumbo Hampers Box", badge: "Spesial", image: "https://images.unsplash.com/photo-1576867757603-05b134ebc379?q=80&w=400" },
+            { id: 25, name: "Hampers Kebuli Nampan Box", category: "hampers", price: 115000, stock: 9, description: "Hampers box dengan sajian Kebuli Nampan", badge: "", image: "https://images.unsplash.com/photo-1576867757603-05b134ebc379?q=80&w=400" },
+            { id: 26, name: "Hampers Ayam Panggang Jumbo Bumbu Opor", category: "hampers", price: 95000, stock: 7, description: "Ayam Panggang Jumbo + Kuah Opor + Sambal Lalapan + Kemasan Hampers", badge: "", image: "https://images.unsplash.com/photo-1576867757603-05b134ebc379?q=80&w=400" },
+            { id: 27, name: "Hampers Ayam Panggang Kampung Besek", category: "hampers", price: 130000, stock: 6, description: "Kemasan besek tradisional yang elegan", badge: "Eksklusif", image: "https://images.unsplash.com/photo-1576867757603-05b134ebc379?q=80&w=400" },
+            { id: 28, name: "Hampers Nampan Ayam Panggang Vakum", category: "hampers", price: 200000, stock: 4, description: "Dikemas vakum untuk pengiriman jarak jauh", badge: "Aman", image: "https://images.unsplash.com/photo-1576867757603-05b134ebc379?q=80&w=400" },
+            { id: 29, name: "Paket Kebuli Basmati Ayam Panggang Nampan", category: "hampers", price: 150000, stock: 10, description: "Paket nampan ayam panggang lezat", badge: "", image: "https://images.unsplash.com/photo-1576867757603-05b134ebc379?q=80&w=400" },
+            { id: 30, name: "Paket Kebuli Basmati Nampan Besar", category: "hampers", price: 250000, stock: 3, description: "Untuk 13-14 Porsi", badge: "Porsi Besar", image: "https://images.unsplash.com/photo-1576867757603-05b134ebc379?q=80&w=400" },
+            { id: 31, name: "Paket Kebuli Nampan Kambing", category: "hampers", price: 160000, stock: 5, description: "Untuk 4 Porsi", badge: "Spesial Kambing", image: "https://images.unsplash.com/photo-1576867757603-05b134ebc379?q=80&w=400" }
         ];
 
         const dToday = new Date().toISOString().split('T')[0];
@@ -788,10 +821,10 @@
 
         // Initial Mock Orders
         const defaultOrders = [
-            { id: "ORD-9841", name: "Dwi Wahyuni", phone: "81223455611", method: "Kirim Ke Rumah", address: "Perum Citra Elok", notes: "-", items: "Ayam Panggang Spesial x 1, Paket Hemat Box Bebek x 2", total: 171000, status: "Diproses", date: dToday },
-            { id: "ORD-3412", name: "Bambang Tri", phone: "85744312233", method: "Ambil Sendiri", address: "-", notes: "-", items: "Bebek Panggang Premium x 2", total: 270000, status: "Selesai", date: dToday },
-            { id: "ORD-1192", name: "Siti Rahma", phone: "81992288334", method: "Kirim Ke Rumah", address: "Jl. Sudirman", notes: "-", items: "Ayam Panggang Potong x 3", total: 72000, status: "Selesai", date: dPast1 },
-            { id: "ORD-5521", name: "Agus Santoso", phone: "82233445566", method: "Ambil Sendiri", address: "-", notes: "-", items: "Ekstra Sambal Korek x 5", total: 30000, status: "Selesai", date: dPast2 }
+            { id: "ORD-9841", name: "Dwi Wahyuni", phone: "81223455611", method: "Kirim Ke Rumah", address: "Perum Citra Elok", notes: "-", items: "Ayam Negeri Marem Jumbo x 1, Pahe Kebuli Basmati Ayam x 2", total: 95000, status: "Diproses", date: dToday },
+            { id: "ORD-3412", name: "Bambang Tri", phone: "85744312233", method: "Ambil Sendiri", address: "-", notes: "-", items: "Bebek Panggang Original x 2", total: 180000, status: "Selesai", date: dToday },
+            { id: "ORD-1192", name: "Siti Rahma", phone: "81992288334", method: "Kirim Ke Rumah", address: "Jl. Sudirman", notes: "-", items: "Ayam Negeri Panggang (Potong) x 4", total: 36000, status: "Selesai", date: dPast1 },
+            { id: "ORD-5521", name: "Agus Santoso", phone: "82233445566", method: "Ambil Sendiri", address: "-", notes: "-", items: "Hampers Ayam Panggang Jumbo Bumbu Opor x 1", total: 95000, status: "Selesai", date: dPast2 }
         ];
 
         // Simulated Expenses for Profit Calculation
@@ -801,7 +834,13 @@
         ];
 
         // Variables
-        let menuList = JSON.parse(localStorage.getItem('bangsis_menu')) || defaultMenuData;
+        let menuList = JSON.parse(localStorage.getItem('bangsis_menu'));
+        // Force replace to the new 31 items if local storage holds old limited list
+        if (!menuList || menuList.length < 30) {
+            menuList = defaultMenuData;
+            localStorage.setItem('bangsis_menu', JSON.stringify(menuList));
+        }
+        
         let orderList = JSON.parse(localStorage.getItem('bangsis_orders')) || defaultOrders;
         let expenseList = JSON.parse(localStorage.getItem('bangsis_expenses')) || defaultExpenses;
         let cartList = [];
@@ -1097,20 +1136,21 @@
                 options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { grid: { display: false } } } }
             });
 
-            let cAyam = 0, cBebek = 0, cPaket = 0, cPel = 0;
+            let cAyam = 0, cBebek = 0, cPaket = 0, cHampers = 0, cPel = 0;
             vOrders.forEach(o => {
                 const itm = o.items.toLowerCase();
-                if(itm.includes('paket')) cPaket++;
+                if(itm.includes('hampers') || itm.includes('nampan')) cHampers++;
+                else if(itm.includes('paket') || itm.includes('kebuli')) cPaket++;
                 else if(itm.includes('bebek')) cBebek++;
                 else if(itm.includes('ayam')) cAyam++;
                 else cPel++;
             });
-            if(cAyam===0 && cBebek===0 && cPaket===0) { cAyam=5; cBebek=3; cPaket=6; cPel=2; }
+            if(cAyam===0 && cBebek===0 && cPaket===0 && cHampers===0) { cAyam=5; cBebek=3; cPaket=6; cHampers=2; cPel=1; }
 
             if(chartStock) chartStock.destroy();
             chartStock = new Chart(document.getElementById('stockChart').getContext('2d'), {
                 type: 'doughnut',
-                data: { labels: ['Ayam', 'Bebek', 'Paket Box', 'Lainnya'], datasets: [{ data: [cAyam, cBebek, cPaket, cPel], backgroundColor: ['#e11d48', '#990000', '#f43f5e', '#fca5a5'] }] },
+                data: { labels: ['Ayam', 'Bebek', 'Paket/Kebuli', 'Hampers', 'Lainnya'], datasets: [{ data: [cAyam, cBebek, cPaket, cHampers, cPel], backgroundColor: ['#e11d48', '#990000', '#f43f5e', '#be123c', '#fca5a5'] }] },
                 options: { responsive: true, maintainAspectRatio: false, cutout: '70%', plugins: { legend: { position: 'right', labels: { usePointStyle: true, boxWidth: 8, font: {size:10} } } } }
             });
         }
